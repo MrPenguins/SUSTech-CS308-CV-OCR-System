@@ -10,8 +10,10 @@ def main():
     cv2.waitKey(0)
     cv2.destroyAllWindows()
     print(img)
-    lp=line_projection(img)
+    lp = line_projection(img)
     draw_line_projection_graph(lp)
+    lines = line_segmentation(lp)
+    print(lines)
 
 
 if __name__ == '__main__':
