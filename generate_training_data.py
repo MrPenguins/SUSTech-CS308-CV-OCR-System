@@ -28,22 +28,26 @@ def generate_random_image(epoch: int):
                        random.randint(LETTER_LOCATION_RANGE[0], LETTER_LOCATION_RANGE[1]))
     for i in range(65, 91):
         image = generate_character_image(chr(i), font_size, image_size, letter_location)
-        path = os.path.join(current_path, 'data/UpperCase', chr(i), str(epoch) + '.png')
+        path = os.path.join(current_path, 'data', chr(i), 'u' + str(epoch) + '.png')
         image.save(path)
     for i in range(97, 123):
         image = generate_character_image(chr(i), font_size, image_size, letter_location)
-        path = os.path.join(current_path, 'data/LowerCase', chr(i), str(epoch) + '.png')
+        path = os.path.join(current_path, 'data', chr(i), 'l' + str(epoch) + '.png')
         image.save(path)
 
 
 def generate_folders():
     current_path = os.getcwd()
     for i in range(65, 91):
-        os.mkdir(current_path + '\\data\\UpperCase\\' + chr(i))
+        os.mkdir(current_path + '\\data\\' + chr(i))
 
-    for i in range(97, 123):
-        os.mkdir(current_path + '\\data\\LowerCase\\' + chr(i))
+    # for i in range(65, 91):
+    #     os.mkdir(current_path + '\\data\\UpperCase\\' + chr(i))
+    #
+    # for i in range(97, 123):
+    #     os.mkdir(current_path + '\\data\\LowerCase\\' + chr(i))
 
 
-for i in range(0, 500):
+generate_folders()
+for i in range(0, 50):
     generate_random_image(i)
