@@ -5,15 +5,16 @@ from segmentation import *
 
 def main():
     img = getGrayImage("Sample_Picture.png")
-    cv2.namedWindow("Image")
-    cv2.imshow("Image", img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-    print(img)
+    # cv2.namedWindow("Image")
+    # cv2.imshow("Image", img)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
     lp = line_projection(img)
     draw_line_projection_graph(lp)
     lines = line_segmentation(lp)
     print(lines)
+    cp = character_projection(img, lines[1])
+    draw_character_projection_graph(cp)
 
 
 if __name__ == '__main__':

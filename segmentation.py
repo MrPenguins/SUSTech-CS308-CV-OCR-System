@@ -1,6 +1,7 @@
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
+from typing import List
 
 POINT_THRESHOLD = 100  # 小于该值，判定改像素点有文字内容
 LINE_HEIGHT_MIN = 5  # 最小行高
@@ -36,3 +37,18 @@ def line_segmentation(lp: np.ndarray):
             find_start = False
 
     return lines
+
+
+def character_projection(image: np.ndarray, line: tuple) -> np.ndarray:
+    start = line[0]
+    end = line[1]
+    image_line = image[start:end]
+    cp = np.zeros(image_line.shape[1], dtype=int)
+    for i in range(image_line.shape[1]):
+        cp[i] = np.sum(image_line[:, i] < POINT_THRESHOLD)
+    return cp
+
+
+def draw_character_projection_graph(cp: np.ndarray):
+    plt.bar(range(0, cp.shape[0]), cp, width=1)
+    plt.show()
