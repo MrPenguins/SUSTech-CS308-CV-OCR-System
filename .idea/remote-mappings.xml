@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RemoteMappingsManager">
+    <list>
+      <list>
+        <remote-mappings server-id="python@b19a9106-40a5-4fed-a7e7-13fd671326d8" />
+        <remote-mappings server-id="python@sftp://zhangmy@10.20.85.61:22/home2/zhangmy/anaconda3/envs/csw/bin/python">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/home3/hqlab/gangroup/cswFile/CVFile/ocr_stage2" />
+            </list>
+          </settings>
+        </remote-mappings>
+        <remote-mappings server-id="python@sftp://gangroup@10.20.9.23:22/home3/hqlab/gangroup/anaconda3/envs/csw/bin/python">
+          <settings>
+            <list>
+              <mapping local-root="$PROJECT_DIR$" remote-root="/home3/hqlab/gangroup/cswFile/CVFile/ocr_stage2" />
+            </list>
+          </settings>
+        </remote-mappings>
+      </list>
+    </list>
+  </component>
+</project>
