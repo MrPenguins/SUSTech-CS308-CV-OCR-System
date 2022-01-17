@@ -17,11 +17,6 @@ def line_projection(image: np.ndarray) -> np.ndarray:
     return lp
 
 
-def draw_line_projection_graph(lp: np.ndarray):
-    plt.barh(range(0, lp.shape[0]), lp, height=1)
-    plt.show()
-
-
 def line_segmentation(lp: np.ndarray):
     lines = []
     find_start = False
@@ -47,11 +42,6 @@ def character_projection(image: np.ndarray, line: tuple) -> np.ndarray:
     for i in range(image_line.shape[1]):
         cp[i] = np.sum(image_line[:, i] < POINT_THRESHOLD)
     return cp
-
-
-def draw_character_projection_graph(cp: np.ndarray):
-    plt.bar(range(0, cp.shape[0]), cp, width=1)
-    plt.show()
 
 
 def character_segmentation(cp: np.ndarray):
