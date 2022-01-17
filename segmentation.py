@@ -5,7 +5,7 @@ from typing import List
 
 POINT_THRESHOLD = 100  # 小于该值，判定改像素点有文字内容
 LINE_HEIGHT_MIN = 5  # 最小行高
-CHARACTER_WIDTH_MIN = 5  # 最小字宽
+CHARACTER_WIDTH_MIN = 1  # 最小字宽
 LINE_COUNT_MIN = 1
 CHARACTER_COUNT_MIN = 1
 
@@ -52,3 +52,19 @@ def character_projection(image: np.ndarray, line: tuple) -> np.ndarray:
 def draw_character_projection_graph(cp: np.ndarray):
     plt.bar(range(0, cp.shape[0]), cp, width=1)
     plt.show()
+
+
+def character_segmentation(cp: np.ndarray):
+    characters = []
+    find_start = False
+    start = 0
+    for i in range(cp.shape[0] - 1):
+        if not find_start and cp[i] > CHARACTER_COUNT_MIN:
+            start = i
+            find_start = True
+        elif cp[i + 1] < CHARACTER_COUNT_MIN < cp[i] and i - start > CHARACTER_WIDTH_MIN:
+            end = i
+            characters.append((start, end))
+            find_start = False
+
+    return characters

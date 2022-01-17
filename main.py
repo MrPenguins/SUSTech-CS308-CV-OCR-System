@@ -13,8 +13,10 @@ def main():
     draw_line_projection_graph(lp)
     lines = line_segmentation(lp)
     print(lines)
-    cp = character_projection(img, lines[1])
+    cp = character_projection(img, lines[2])
     draw_character_projection_graph(cp)
+    characters=character_segmentation(cp)
+    print(len(characters))
 
 
 if __name__ == '__main__':
