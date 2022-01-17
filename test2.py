@@ -12,9 +12,6 @@ import cv2
 import matplotlib.pyplot as plt
 
 
-
-
-
 class CNN(nn.Module):
     def __init__(self):
         super(CNN, self).__init__()
@@ -59,17 +56,15 @@ class CNN(nn.Module):
         output = self.Linear(input)
         return output
 
-
-
 #读取网络框架
 cnn = CNN()
 #读取权重：
-cnn.load_state_dict(torch.load('EMNIST_CNN.pkl'))
+cnn.load_state_dict(torch.load('./checkpoints/stage2.pkl'))
 
 
 #test_x:(10000行1列，每列元素为28*28矩阵)
 # 提供自己的数据进行测试：
-my_img = plt.imread("/home3/hqlab/gangroup/cswFile/CVFile/ocr_stage2/datasets/G.jpg")
+my_img = plt.imread("/home3/hqlab/gangroup/cswFile/CVFile/ocr_stage2/datasets/Test_png/D/u24.png")
 my_img = my_img[:,:,0] #转换为单通道
 my_img = cv2.resize(my_img,(28,28))#转换为28*28尺寸
 my_img = torch.from_numpy(my_img)#转换为张量
