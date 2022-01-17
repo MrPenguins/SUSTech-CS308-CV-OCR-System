@@ -1,4 +1,5 @@
 import cv2
+import os
 from preprocess import *
 from segmentation import *
 from visulization import *
@@ -23,6 +24,20 @@ def main():
     t = image_character_segmentation("Sample2.png")
     print(t)
     rectangle_characters("Sample2.png", t)
+    image = cv2.imread("Sample2.png")
+    c = t[1]
+    # cv2.namedWindow("Image")
+    # cv2.imshow("Image", image[c[0]: c[1], c[2]: c[3]])
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
+    for c in t:
+        # cv2.namedWindow("Image")
+        # cv2.imshow("Image", image[c[0]: c[1], c[2]: c[3]])
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+        cv2.imwrite(os.path.join('./tmp/t.png'), image[c[0]: c[1], c[2]: c[3]])
+        # TODO call your function to get corresponding letters
+
 
 
 if __name__ == '__main__':

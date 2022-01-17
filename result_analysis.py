@@ -6,4 +6,6 @@ def accuracy(text1: str, text2: str) -> float:
     return sequence.ratio()
 
 
+# def generate_test_image
+
 # print(accuracy("asdfghjkl", "asdfhjkl"))
