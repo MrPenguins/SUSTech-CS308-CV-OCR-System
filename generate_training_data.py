@@ -13,7 +13,7 @@ LETTER_LOCATION_RANGE_VER = [-7, 2]
 def generate_character_image(letter: str, font_size: int, image_size: tuple, letter_location: tuple):
     image = Image.new("RGB", image_size, (255, 255, 255))
     image_draw = ImageDraw.Draw(image)
-    font = ImageFont.truetype("./Font/TimesNewRoman.ttf", font_size)
+    font = ImageFont.truetype("./Font/Lato/Lato-Black.ttf", font_size)
     image_draw.text(letter_location, letter, font=font, fill="#000000")
     # image.show()
     # image.save("t.png")
