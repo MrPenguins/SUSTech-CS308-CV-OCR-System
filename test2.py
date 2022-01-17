@@ -13,6 +13,8 @@ import matplotlib.pyplot as plt
 
 
 
+
+
 class CNN(nn.Module):
     def __init__(self):
         super(CNN, self).__init__()
@@ -58,6 +60,8 @@ class CNN(nn.Module):
         return output
 
 
+
+#读取网络框架
 cnn = CNN()
 #读取权重：
 cnn.load_state_dict(torch.load('EMNIST_CNN.pkl'))
@@ -75,6 +79,85 @@ my_img = torch.unsqueeze(my_img, dim = 0)/255. #再添加一个维度并把灰�
 
 
 test_output = cnn(my_img)
+
+
+#
+# #可视化部分：
+#
+# #输入原图像：
+# plt.imshow(my_img.squeeze())
+# plt.show()
+#
+#
+#
+# #Conv1:
+# cnt = 1
+# my_img = cnn.Conv1(my_img)
+# img = my_img.squeeze()
+# for i in img.squeeze():
+#
+#     plt.axis('off')
+#     fig = plt.gcf()
+#     fig.set_size_inches(5,5)#输出width*height像素
+#     plt.margins(0,0)
+#
+#     plt.imshow(i.detach().numpy())
+#     plt.subplot(4, 4, cnt)
+#     plt.axis('off')
+#     plt.imshow(i.detach().numpy())
+#     cnt += 1
+# plt.subplots_adjust(top=1,bottom=0,left=0,right=1,hspace=0,wspace=0)
+# plt.show()
+#
+#
+#
+# #Conv2:
+# cnt = 1
+# my_img = cnn.Conv2(my_img)
+# img = my_img.squeeze()
+# for i in img.squeeze():
+#
+#     plt.axis('off')
+#     fig = plt.gcf()
+#     fig.set_size_inches(5,5)#输出width*height像素
+#     plt.margins(0,0)
+#
+#     plt.imshow(i.detach().numpy())
+#     plt.subplot(4, 8, cnt)
+#     plt.axis('off')
+#     plt.imshow(i.detach().numpy())
+#     cnt += 1
+# #plt.subplots_adjust(top=1,bottom=0,left=0,right=1,hspace=0,wspace=0)
+# plt.show()
+#
+#
+#
+#
+# #全连接层：
+# my_img = my_img.view(my_img.size(0), -1)
+# fig = plt.gcf()
+# fig.set_size_inches(10000,4)#输出width*height像素
+# plt.subplots_adjust(top=1,bottom=0,left=0,right=1,hspace=0,wspace=0)
+# plt.margins(0,0)
+#
+#
+# my_img = cnn.Linear[0](my_img)
+# plt.subplot(3, 1, 1)
+# plt.imshow(my_img.detach().numpy())
+#
+# my_img = cnn.Linear[1](my_img)
+# my_img = cnn.Linear[2](my_img)
+# my_img = cnn.Linear[3](my_img)
+# plt.subplot(3, 1, 2)
+# plt.imshow(my_img.detach().numpy())
+#
+# my_img = cnn.Linear[4](my_img)
+# my_img = cnn.Linear[5](my_img)
+# plt.subplot(3, 1, 3)
+# plt.imshow(my_img.detach().numpy())
+#
+# # plt.show()
+#
 
 
 #输出预测结果:

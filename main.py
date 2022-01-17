@@ -69,8 +69,6 @@ plt.imshow(a)
 plt.axis('off')
 plt.show()
 
-
-
 # 卷积网络搭建：两层卷积网络（卷积+池化）+ 三层全连接层
 class CNN(nn.Module):
     def __init__(self):
