@@ -20,9 +20,9 @@ def image_character_segmentation(image_addr: str) -> list:
 
 
 def main():
-    t = image_character_segmentation("Sample_Picture.png")
+    t = image_character_segmentation("Sample2.png")
     print(t)
-    rectangle_characters("Sample_Picture.png", t)
+    rectangle_characters("Sample2.png", t)
 
 
 if __name__ == '__main__':

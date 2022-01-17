@@ -28,7 +28,7 @@ def line_segmentation(lp: np.ndarray):
             find_start = True
         elif lp[i + 1] < LINE_COUNT_MIN < lp[i] and i - start > LINE_HEIGHT_MIN:
             end = i
-            lines.append((start, end))
+            lines.append((start - 1, end + 1))
             find_start = False
 
     return lines
@@ -54,7 +54,23 @@ def character_segmentation(cp: np.ndarray):
             find_start = True
         elif cp[i + 1] < CHARACTER_COUNT_MIN < cp[i] and i - start > CHARACTER_WIDTH_MIN:
             end = i
-            characters.append((start, end))
+            characters.append((start - 1, end + 1))
             find_start = False
-
+    characters = split_long_character(characters)
     return characters
+
+
+def split_long_character(characters):
+    new_characters = []
+    sum = 0
+    for character in characters:
+        sum += character[1] - character[0]
+    avg = sum / len(characters)
+    for character in characters:
+        if character[1] - character[0] > 2 * avg:
+            length = character[1] - character[0]
+            new_characters.append((character[0], int(character[0] + length / 2) + 1))
+            new_characters.append((int(character[0] + length / 2) - 1, character[1]))
+        else:
+            new_characters.append((character[0], character[1]))
+    return new_characters

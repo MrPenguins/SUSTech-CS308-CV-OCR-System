@@ -14,7 +14,7 @@ def draw_character_projection_graph(cp: np.ndarray):
 
 
 def rectangle_characters(image_addr: str, character_list):
-    character_list=iter(character_list)
+    character_list = iter(character_list)
     img = cv2.imread(image_addr)
     for character_rec_index in character_list:
         cv2.rectangle(img, (character_rec_index[2], character_rec_index[0]),
