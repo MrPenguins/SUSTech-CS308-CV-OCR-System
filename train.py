@@ -16,7 +16,7 @@ train_loader,test_loader,train_data,test_data,label_num = data_loader.load_data(
 model = create_model(opt,label_num)
 
 # 模型保存文件初始化
-save_path = "./checkpoints/" + opt.name + '.pkl'
+save_path = "./checkpoints/" + opt.name
 torch.save(model.state_dict(), save_path)
 
 model.load_state_dict(torch.load(save_path))
@@ -52,8 +52,8 @@ for epoch in range(opt.epoch):
                 accuracy = sum(pred_y == test_y) / test_data.__len__()
                 print('Eopch:', epoch, ' | train loss: %.6f' % loss.item(), ' | test accracy:%.5f' % accuracy,  ' | step: %d' % step)
 
-#仅保存训练好的参数
-torch.save(model.state_dict(), save_path)
+    #仅保存训练好的参数
+    torch.save(model.state_dict(), save_path+f'-epoch-{epoch}.pkl')
 
 
 

@@ -10,5 +10,5 @@ class BaseModel(torch.nn.Module):
     def initialize(self, opt):
         pass
 
-    def forward(self):
+    def forward(self,input):
         pass

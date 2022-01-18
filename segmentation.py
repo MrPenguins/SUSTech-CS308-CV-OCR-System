@@ -8,7 +8,7 @@ LINE_HEIGHT_MIN = 5  # 最小行高 真实识别 5    生成训练集 20
 CHARACTER_WIDTH_MIN = 1  # 最小字宽
 LINE_COUNT_MIN = 1
 CHARACTER_COUNT_MIN = 1
-WORD_SPACE_RATIO = 1.1
+WORD_SPACE_RATIO = 1.5
 
 
 def line_projection(image: np.ndarray) -> np.ndarray:

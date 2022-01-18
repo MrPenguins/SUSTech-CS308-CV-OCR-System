@@ -41,24 +41,24 @@ def main():
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
     result = ""
-    # for c in t:
-    #     # cv2.namedWindow("Image")
-    #     # cv2.imshow("Image", resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
-    #     # cv2.waitKey(0)
-    #     # cv2.destroyAllWindows()
-    #     if c == "\n" or c == " ":
-    #         result += c
-    #     else:
-    #         cv2.imwrite(os.path.join('./tmp/t.png'), resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
-    #         # TODO call your function to get corresponding letters
-    #         now_letter_char = translate(os.path.join('./tmp/t.png'))
-    #         result += now_letter_char
-    # print("Original text:")
-    # print(standard_text)
-    # print("Result text:")
-    # print(result)
-    # print("Accuracy:")
-    # print(accuracy(standard_text, result))
+    for c in t:
+        # cv2.namedWindow("Image")
+        # cv2.imshow("Image", resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+        if c == "\n" or c == " ":
+            result += c
+        else:
+            cv2.imwrite(os.path.join('./tmp/t.png'), resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
+            # TODO call your function to get corresponding letters
+            now_letter_char = translate(os.path.join('./tmp/t.png'))
+            result += now_letter_char
+    print("Original text:")
+    print(standard_text)
+    print("Result text:")
+    print(result)
+    print("Accuracy:")
+    print(accuracy(standard_text, result))
 
 
 def resize_character_image(image: np.ndarray) -> np.ndarray:

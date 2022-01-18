@@ -24,8 +24,8 @@ def image_process(input_path:str):
     processed_img = torch.unsqueeze(processed_img, dim=0)  # 添加一个维度
     processed_img = torch.unsqueeze(processed_img, dim=0) / 255.  # 再添加一个维度并把灰度映射在(0,1之间)
     # print(processed_img.size())#torch.Size([1, 1, 28, 28])卷积层需要4个维度的输入
-    plt.imshow(processed_img.squeeze())
-    plt.show()
+    # plt.imshow(processed_img.squeeze())
+    # plt.show()
     return processed_img
 
 def predict(model,image_process):
