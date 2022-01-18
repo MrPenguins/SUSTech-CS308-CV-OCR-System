@@ -8,6 +8,7 @@ LINE_HEIGHT_MIN = 5  # 最小行高 真实识别 5    生成训练集 20
 CHARACTER_WIDTH_MIN = 1  # 最小字宽
 LINE_COUNT_MIN = 1
 CHARACTER_COUNT_MIN = 1
+WORD_SPACE_RATIO = 1.1
 
 
 def line_projection(image: np.ndarray) -> np.ndarray:
@@ -57,6 +58,7 @@ def character_segmentation(cp: np.ndarray):
             characters.append((start - 1, end + 1))
             find_start = False
     characters = split_long_character(characters)
+    characters = split_words(characters)
     return characters
 
 
@@ -73,4 +75,18 @@ def split_long_character(characters):
             new_characters.append((int(character[0] + length / 2) - 1, character[1]))
         else:
             new_characters.append((character[0], character[1]))
+    return new_characters
+
+
+def split_words(characters):
+    new_characters = []
+    sum = 0
+    for i in range(len(characters) - 1):
+        sum += characters[i + 1][0] - characters[i][1]
+    avg = sum / (len(characters) - 1)
+    for i in range(len(characters) - 1):
+        new_characters.append(characters[i])
+        if characters[i + 1][0] - characters[i][1] > avg * WORD_SPACE_RATIO:
+            new_characters.append(" ")
+    new_characters.append(characters[len(characters) - 1])
     return new_characters
