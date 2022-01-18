@@ -11,7 +11,7 @@ LINE_SPACING_RANGE = [30, 30]
 FONT_DICT = ["TimesNewRoman.ttf","Lato/Lato-Black.ttf"]
 
 
-def get_random_font():
+def get_random_font_addr():
     return FONT_DICT[random.randint(0, len(FONT_DICT) - 1)]
 
 
@@ -26,7 +26,7 @@ def generate_test_image():
         lines = textFile.readlines()
     line_location = 20
     for i in range(0, len(lines)):
-        font = ImageFont.truetype(os.path.join('./Font', get_random_font()), font_size)
+        font = ImageFont.truetype(os.path.join('./Font', get_random_font_addr()), font_size)
         image_draw.text([10, line_location], lines[i], font=font, fill="#000000")
         line_location += font_size + random.randint(LINE_SPACING_RANGE[0], LINE_SPACING_RANGE[1])
     image.save('asdf.png')
