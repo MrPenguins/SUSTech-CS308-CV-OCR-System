@@ -24,12 +24,12 @@ def image_character_segmentation(image_addr: str) -> list:
 
 
 def main():
-    with open('./test_txt/test.txt') as textFile:
+    with open('./test_txt/Alice.txt') as textFile:
         standard_text = textFile.read()
-    t = image_character_segmentation("test.png")
+    t = image_character_segmentation("Alice.png")
     print(t)
-    rectangle_characters("test.png", t)
-    image = cv2.imread("test.png")
+    rectangle_characters("Alice.png", t)
+    image = cv2.imread("Alice.png")
     c = t[0]
     # cv2.namedWindow("Image")
     # cv2.imshow("Image", image[c[0]: c[1], c[2]: c[3]])
@@ -56,8 +56,8 @@ def main():
 
 def resize_character_image(image: np.ndarray) -> np.ndarray:
     m = max(image.shape[0], image.shape[1])
-    height_plus = (m - image.shape[0]) // 2 + 2
-    width_plus = (m - image.shape[1]) // 2 + 2
+    height_plus = (m - image.shape[0]) // 2 + 1
+    width_plus = (m - image.shape[1]) // 2 + 1
     image = np.pad(image, ((height_plus, height_plus), (width_plus, width_plus), (0, 0)), 'constant',
                    constant_values=255)
     return image
