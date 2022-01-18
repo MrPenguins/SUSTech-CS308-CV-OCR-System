@@ -24,10 +24,10 @@ def image_character_segmentation(image_addr: str) -> list:
 
 
 def main():
-    t = image_character_segmentation("Sample2.png")
+    t = image_character_segmentation("asdf.png")
     print(t)
-    rectangle_characters("Sample2.png", t)
-    image = cv2.imread("Sample2.png")
+    rectangle_characters("asdf.png", t)
+    image = cv2.imread("asdf.png")
     c = t[1]
     # cv2.namedWindow("Image")
     # cv2.imshow("Image", image[c[0]: c[1], c[2]: c[3]])
