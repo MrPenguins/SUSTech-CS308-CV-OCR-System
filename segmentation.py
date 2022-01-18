@@ -52,7 +52,7 @@ def character_segmentation(cp: np.ndarray):
         if not find_start and cp[i] > CHARACTER_COUNT_MIN:
             start = i
             find_start = True
-        elif cp[i + 1] < CHARACTER_COUNT_MIN < cp[i] and i - start > CHARACTER_WIDTH_MIN:
+        elif find_start and cp[i + 1] < CHARACTER_COUNT_MIN and i - start > CHARACTER_WIDTH_MIN:
             end = i
             characters.append((start - 1, end + 1))
             find_start = False

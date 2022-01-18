@@ -30,6 +30,7 @@ def image_process(input_path:str):
 
 def predict(model,image_process):
     predict_output = model(image_process)
+    # print(predict_output)
     pred_letter_asc = int(torch.max(predict_output, 1)[1])
     return chr(pred_letter_asc + 65 + 32) # char 小写字母
 
