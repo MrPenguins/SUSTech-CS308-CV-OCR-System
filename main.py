@@ -24,30 +24,31 @@ def image_character_segmentation(image_addr: str) -> list:
 
 
 def main():
-    t = image_character_segmentation("u1.png")
+    t = image_character_segmentation("./tmp/handupper.png")
     print(t)
-    rectangle_characters("u1.png", t)
-    image = cv2.imread("u1.png")
+    rectangle_characters("./tmp/handupper.png", t)
+    image = cv2.imread("./tmp/handupper.png")
     c = t[0]
     # cv2.namedWindow("Image")
     # cv2.imshow("Image", image[c[0]: c[1], c[2]: c[3]])
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
+    letter_count = 0
+    count = 0
     for c in t:
         # cv2.namedWindow("Image")
         # cv2.imshow("Image", resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
-        letter_count = 0
-        count = 0
+
         cv2.imwrite(os.path.join('./tmp/t.png'), resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
         # TODO call your function to get corresponding letters
         now_letter_char = translate(os.path.join('./tmp/t.png'))
-        if now_letter_char == chr(letter_count):
+        if now_letter_char == chr(letter_count+97):
             count += 1
-
-        print(now_letter_char, " ", chr(letter_count))
+        print(now_letter_char, " ", chr(letter_count+97))
         letter_count += 1
+
     print("the accuray is", count / 26)
 
 

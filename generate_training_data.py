@@ -6,17 +6,17 @@ from PIL import Image, ImageFont, ImageDraw
 from main import image_character_segmentation, resize_character_image
 
 # 训练参数1
-# FONT_SIZE_RANGE = [30, 30] #
-# IMAGE_WIDTH_RANGE = [28, 28]
-# IMAGE_HEIGHT_RANGE = [28, 28]
-# LETTER_LOCATION_RANGE_HOR = [-2, 16]
-# LETTER_LOCATION_RANGE_VER = [-7, 2]
-
 FONT_SIZE_RANGE = [30, 30] #
 IMAGE_WIDTH_RANGE = [28, 28]
 IMAGE_HEIGHT_RANGE = [28, 28]
 LETTER_LOCATION_RANGE_HOR = [-2, 16]
 LETTER_LOCATION_RANGE_VER = [-7, 2]
+
+# FONT_SIZE_RANGE = [30, 30] #
+# IMAGE_WIDTH_RANGE = [28, 28]
+# IMAGE_HEIGHT_RANGE = [28, 28]
+# LETTER_LOCATION_RANGE_HOR = [-2, 16]
+# LETTER_LOCATION_RANGE_VER = [-7, 2]
 
 # 这组参数效果好 基本上填满了整个框
 # FONT_SIZE_RANGE = [32, 32] #
@@ -61,15 +61,15 @@ def generate_random_image(epoch: int):
                        random.randint(LETTER_LOCATION_RANGE_VER[0], LETTER_LOCATION_RANGE_VER[1]))
     for i in range(65, 91):
         image = generate_character_image(chr(i), font_size, image_size, letter_location)
-        path = os.path.join(current_path, 'datasets/threeStage_try2_xun1/Train_png', chr(i), 'u' + str(epoch) + '.png')
+        path = os.path.join(current_path, 'datasets/xun1_duoziti/Test_png', chr(i), 'u' + str(epoch) + '.png')
         image.save(path)
-        training_data_process(path)
+        # training_data_process(path)
 
     for i in range(97, 123):
         image = generate_character_image(chr(i), font_size, image_size, letter_location)
-        path = os.path.join(current_path, 'datasets/threeStage_try2_xun1/Train_png', chr(i - 32), 'l' + str(epoch) + '.png')
+        path = os.path.join(current_path, 'datasets/xun1_duoziti/Test_png', chr(i - 32), 'l' + str(epoch) + '.png')
         image.save(path)
-        training_data_process(path)
+        # training_data_process(path)
 
 
 def training_data_process(image_path: os.path):
@@ -86,15 +86,15 @@ def training_data_process(image_path: os.path):
 def generate_folders():
     current_path = os.getcwd()
     for i in range(65, 91):
-        os.mkdir(current_path + '/datasets/threeStage_try2_xun1/Train_png/' + chr(i))
+        os.mkdir(current_path + '/datasets/xun1_duoziti/Test_png/' + chr(i))
 
     # for i in range(65, 91):
     #     os.mkdir(current_path + '\\data\\UpperCase\\' + chr(i))
     #
     # for i in range(97, 123):
-    #     os.mkdir(current_path + '\\data\\LowerCase\\' + chr(i))
+    #     os.mkdir(current_path + '\\data\\LowerCa se\\' + chr(i))
 
 
 generate_folders()
-for i in range(0, 2000):
+for i in range(0, 200):
     generate_random_image(i)

@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from typing import List
 
 POINT_THRESHOLD = 100  # 小于该值，判定改像素点有文字内容
-LINE_HEIGHT_MIN = 20  # 最小行高 真实识别 5    生成训练集 20
+LINE_HEIGHT_MIN = 5  # 最小行高 真实识别 5    生成训练集 20
 CHARACTER_WIDTH_MIN = 1  # 最小字宽
 LINE_COUNT_MIN = 1
 CHARACTER_COUNT_MIN = 1
