@@ -2,10 +2,10 @@ from translate import translate
 
 import os
 
-
 from preprocess import *
 from segmentation import *
 from visulization import *
+from result_analysis import *
 
 
 def image_character_segmentation(image_addr: str) -> list:
@@ -24,17 +24,18 @@ def image_character_segmentation(image_addr: str) -> list:
 
 
 def main():
-    t = image_character_segmentation("./tmp/handupper.png")
+    with open('./test_txt/test.txt') as textFile:
+        standard_text = textFile.read()
+    t = image_character_segmentation("test.png")
     print(t)
-    rectangle_characters("./tmp/handupper.png", t)
-    image = cv2.imread("./tmp/handupper.png")
+    rectangle_characters("test.png", t)
+    image = cv2.imread("test.png")
     c = t[0]
     # cv2.namedWindow("Image")
     # cv2.imshow("Image", image[c[0]: c[1], c[2]: c[3]])
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
-    letter_count = 0
-    count = 0
+    result = ""
     for c in t:
         # cv2.namedWindow("Image")
         # cv2.imshow("Image", resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
@@ -44,12 +45,13 @@ def main():
         cv2.imwrite(os.path.join('./tmp/t.png'), resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
         # TODO call your function to get corresponding letters
         now_letter_char = translate(os.path.join('./tmp/t.png'))
-        if now_letter_char == chr(letter_count+97):
-            count += 1
-        print(now_letter_char, " ", chr(letter_count+97))
-        letter_count += 1
-
-    print("the accuray is", count / 26)
+        result += now_letter_char
+    print("Original text:")
+    print(standard_text)
+    print("Result text:")
+    print(result)
+    print("Accuracy:")
+    print(accuracy(standard_text, result))
 
 
 def resize_character_image(image: np.ndarray) -> np.ndarray:
