@@ -17,8 +17,9 @@ def rectangle_characters(image_addr: str, character_list):
     character_list = iter(character_list)
     img = cv2.imread(image_addr)
     for character_rec_index in character_list:
-        cv2.rectangle(img, (character_rec_index[2], character_rec_index[0]),
-                      (character_rec_index[3], character_rec_index[1]), (0, 255, 0), 1)
+        if character_rec_index != "\n":
+            cv2.rectangle(img, (character_rec_index[2], character_rec_index[0]),
+                          (character_rec_index[3], character_rec_index[1]), (0, 255, 0), 1)
     # cv2.namedWindow("Image")
     # cv2.imshow("Image", img)
     # cv2.waitKey(0)

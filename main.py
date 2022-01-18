@@ -20,6 +20,8 @@ def image_character_segmentation(image_addr: str) -> list:
         for character in characters:
             character_list.append((line[0], line[1], character[0], character[1]))
 
+        character_list.append("\n")
+
     return character_list
 
 
@@ -41,11 +43,13 @@ def main():
         # cv2.imshow("Image", resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
-
-        cv2.imwrite(os.path.join('./tmp/t.png'), resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
-        # TODO call your function to get corresponding letters
-        now_letter_char = translate(os.path.join('./tmp/t.png'))
-        result += now_letter_char
+        if c == "\n":
+            result += c
+        else:
+            cv2.imwrite(os.path.join('./tmp/t.png'), resize_character_image(image[c[0]: c[1], c[2]: c[3]]))
+            # TODO call your function to get corresponding letters
+            now_letter_char = translate(os.path.join('./tmp/t.png'))
+            result += now_letter_char
     print("Original text:")
     print(standard_text)
     print("Result text:")
