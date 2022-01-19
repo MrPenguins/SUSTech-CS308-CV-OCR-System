@@ -16,7 +16,7 @@ The **input** is an image of English text, and through the OCR system, we will *
 ## Prerequisites
 - Linux or macOS or Windows
 - Python 3.6 or more
-- Only CPU is ok for training
+- Only CPU is OK for training
 - Install PyTorch and dependencies from http://pytorch.org
 - Other packages
 ```bash
@@ -44,7 +44,7 @@ cd SUSTech-CS308-CV-OCR-System
 
   The test results will be directly print to the console.
 
-### Dataset
+### Datasets
 
 #### Using existing dataset
 
@@ -52,7 +52,19 @@ We uploaded a dataset of English letters that you can use directly at folder`emn
 
 #### Using  you own dataset
 
-If you want to use your own datasets 
+If you want to use your own datasets , please follow the following format to create the dataset
+
+```python
+        root/dog/xxx.png
+        root/dog/xxy.png
+        root/dog/[...]/xxz.png
+
+        root/cat/123.png
+        root/cat/nsdf3.png
+        root/cat/[...]/asd932_.png
+```
+
+Also, you need to name your training dataset as `Train_png`,  testing dataset as `Test_png`
 
 
 ### Training
